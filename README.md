@@ -27,7 +27,7 @@ Perfume Assistant is a lightweight Python project that turns a text prompt like 
 - Python 3.10 or newer.
 - LM Studio running locally.
 - A local model loaded in LM Studio.
-- A ChromaDB index available in `chromradb/`.
+- A ChromaDB index available in `chroma_db/`.
 
 ## Project structure
 
@@ -52,15 +52,9 @@ perfume-assistant/
 Clone the repository and create a virtual environment:
 
 ```bash
-git clone https://github.com/yourusername/perfume-assistant.git
+git clone https://github.com/AdrianBildea/perfume-assistant.git
 cd perfume-assistant
 python -m venv .venv
-
-# 1. Generate the JSONL dataset from the CSV first
-python build_perfume_rag_dataset.py fra_perfumes.csv fra_cleaned.csv output_dir/
-
-# 2. Now build the chroma_db index using the generated JSONL
-python build_chromadb.py build output_dir/perfumes.jsonl
 ```
 
 Activate it:
@@ -81,6 +75,16 @@ Install dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
+
+Generate the JSONL dataset from the CSV and build the ChromaDB index:
+
+```bash
+# 1. Generate the JSONL dataset from the CSV first
+python build_perfume_rag_dataset.py fra_perfumes.csv fra_cleaned.csv output_dir/
+
+# 2. Now build the chroma_db index using the generated JSONL
+python build_chromadb.py build output_dir/perfumes.jsonl
 ```
 
 Make sure LM Studio is running at:
@@ -115,7 +119,7 @@ python perfume_assistant.py rose musky elegant
 ## Example output
 
 ```text
-1. Chestnut-Cream-French-Vanilla by Jousset-Parms
+1. Chestnut-Cream-French-Vanilla by Jousset-Parfums
 A rich, warm fragrance with coffee and vanilla notes that fits a cozy winter profile.
 
 2. Vanilla-Milk by Ellis-Brooklyn
